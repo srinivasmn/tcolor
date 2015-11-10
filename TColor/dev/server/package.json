@@ -10,7 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^0.8.5",
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "lodash": "^3.10.1",
     "mongojs": "^1.4.1",
+    "mongoose": "^4.2.4",
     "morgan": "^1.6.1",
     "restify": "^4.0.3"
   },

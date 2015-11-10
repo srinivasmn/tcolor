@@ -76,6 +76,18 @@ client.get('/user/' + testUser.id, function (err, req, res, user) {
     }
 });
 
+console.log("\n>>>>>>>>>>>> Add the Test User >>>>>>>>>>>>>>>> \n");
+client.post('/user', testUser, function (err, req, res, user) {
+    if (err) {
+        console.log("An error ocurred >>>>>>");
+        console.log(err);
+    } else {
+        console.log('user saved >>>>>>>');
+        console.log(user);
+    }
+});
+
+console.log("\n>>>>>>>>>>>> List the files >>>>>>>>>>>>>>>> \n");
 client.get('/ListFiles/' + dirPath, function (err, req, res, user) {/**/
     if (err) {
         console.log("An error ocurred >>>>>>");
@@ -86,14 +98,16 @@ client.get('/ListFiles/' + dirPath, function (err, req, res, user) {/**/
     }
 }); 
 
-console.log("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> \n");
-client.post('/user', testUser, function (err, req, res, user) {
+
+
+console.log("\n>>>>>>>>>>>>> List Files >>>>>>>>>>>>>>> \n");
+client.get('/api/files', function (err, req, res) {
     if (err) {
         console.log("An error ocurred >>>>>>");
         console.log(err);
     } else {
-        console.log('user saved >>>>>>>');
-        console.log(user);
+        console.log('List of Files >>>>>>>');
+        console.log(res);
     }
 });
 //client.get('/users', function (err, req, res, users) {

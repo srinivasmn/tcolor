@@ -5,11 +5,13 @@ var db          =   mongojs('bucketlistapp', ['appUsers','bucketLists']);
 var server      =   restify.createServer();
 var manageLists =   require('../list/manageList')(server, db);
 var manageUsers = require('./manageUser')(server, db);
+var _ = require('lodash');
 // var db = mongojs('mongodb://srinivasmn:sri123@ds049094.mongolab.com:49094/tcolor', ['users']);
 var db = mongojs('usersdb', ['users']);
 //var db = require('mongojs').connect('usersdb', ['users']);
 var fs = require('fs'); // To list the files in a folder
 var path = require('path');
+var filelist = fileList = require('file-list');  // Function to list files
 var files = [];
 
  
@@ -106,8 +108,12 @@ server.get('/user/:id', function (req, res, next) {
     return next();
 });
 
+
+server.get('/api/files', fileList.listDirectory);
+
+
 server.get('/ListFiles', function (req, res, next) {
-    fs.readdir(dirPath,  function (err, list) {
+    fs.readdir(dirPath,  function (err, files) {
 	    for(var i=0; i<list.length; i++)
     {
             files.push(list[i]); //store the file name into the array files
